@@ -362,11 +362,12 @@
 
   /* ── CATEGORIES ── */
   .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     max-width: 900px;
     margin: 0 auto;
+    justify-content: center;
   }
 
   .cat-card {
@@ -851,7 +852,7 @@
     letter-spacing: 0.1em;
   }
   /* Product image cards */
-  .cat-card { overflow: hidden; padding: 0 !important; }
+  .cat-card { overflow: hidden; padding: 0 !important; flex: 0 0 170px; width: 170px; }
   .cat-img { width: 100%; height: 140px; object-fit: cover; display: block; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
   .cat-label { padding: 12px 8px; font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--gray-800); }
 </style>
