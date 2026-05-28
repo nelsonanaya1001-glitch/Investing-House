@@ -1061,31 +1061,53 @@
     .about-features { grid-template-columns: 1fr; }
     .about-stats-bar { padding: 1.25rem 1.5rem; }
   }
-  .brands-showcase-section { padding: 4.5rem 0 3rem; overflow: hidden; }
-  .brands-showcase-section .section-header { padding: 0 2rem; margin-bottom: 2.5rem; }
-  .marquee-wrap {
-    overflow: hidden;
-    width: 100%;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  }
-  .marquee-track {
+  .brand-carousel {
     display: flex;
-    gap: 14px;
-    width: max-content;
-    animation: marquee 30s linear infinite;
+    align-items: center;
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto;
   }
-  .marquee-track img {
-    height: 280px;
-    width: 400px;
-    object-fit: cover;
+  .brand-carousel-window {
+    overflow: hidden;
+    flex: 1;
+  }
+  .brand-carousel-track {
+    display: flex;
+    gap: 12px;
+    transition: transform 0.4s ease;
+  }
+  .brand-name-card {
+    flex: 0 0 160px;
+    background: var(--white);
+    border: 1.5px solid var(--gray-200);
     border-radius: var(--radius-lg);
+    padding: 1.1rem 1rem;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-800);
+    white-space: nowrap;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .brand-name-card:hover { border-color: var(--green-400); color: var(--green-600); }
+  .brand-nav {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gray-200);
+    background: var(--white);
+    font-size: 18px;
+    color: var(--gray-700);
+    cursor: pointer;
     flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  @keyframes marquee {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+  .brand-nav:hover { background: var(--green-50); border-color: var(--green-400); color: var(--green-600); }
 </style>
 </head>
 <body>
@@ -1216,31 +1238,33 @@
 </section>
 
 <!-- BRANDS + PRODUCTS -->
-<section id="brands" class="brands-showcase-section">
+<section id="brands">
   <div class="section-header">
-    <div class="section-tag">Our Products</div>
+    <div class="section-tag">Featured Brands</div>
     <h2>Trusted Brands in Today's Market</h2>
     <p>We work with products from recognized, high-demand brands consumers love.</p>
   </div>
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <img src="electronics.jpeg" alt="Electronics" />
-      <img src="air-fryers.webp" alt="Air Fryers" />
-      <img src="coffee-makers.jpg" alt="Coffee Makers" />
-      <img src="vacuum-cleaners.webp" alt="Vacuum Cleaners" />
-      <img src="toasters-ovens.webp" alt="Toasters" />
-      <img src="office-supplies.webp" alt="Office Supplies" />
-      <img src="kitchen.jpg" alt="Kitchen" />
-      <img src="living-room.jpg" alt="Living Room" />
-      <img src="electronics.jpeg" alt="Electronics" />
-      <img src="air-fryers.webp" alt="Air Fryers" />
-      <img src="coffee-makers.jpg" alt="Coffee Makers" />
-      <img src="vacuum-cleaners.webp" alt="Vacuum Cleaners" />
-      <img src="toasters-ovens.webp" alt="Toasters" />
-      <img src="office-supplies.webp" alt="Office Supplies" />
-      <img src="kitchen.jpg" alt="Kitchen" />
-      <img src="living-room.jpg" alt="Living Room" />
+  <div class="brand-carousel">
+    <button class="brand-nav" id="brandPrev">&#8592;</button>
+    <div class="brand-carousel-window">
+      <div class="brand-carousel-track" id="brandTrack">
+        <div class="brand-name-card">Shark</div>
+        <div class="brand-name-card">Ninja</div>
+        <div class="brand-name-card">KitchenAid</div>
+        <div class="brand-name-card">Keurig</div>
+        <div class="brand-name-card">Cuisinart</div>
+        <div class="brand-name-card">Hamilton Beach</div>
+        <div class="brand-name-card">Braun</div>
+        <div class="brand-name-card">Black+Decker</div>
+        <div class="brand-name-card">Oster</div>
+        <div class="brand-name-card">Bissell</div>
+        <div class="brand-name-card">Epson</div>
+        <div class="brand-name-card">Canon</div>
+        <div class="brand-name-card">Logitech</div>
+        <div class="brand-name-card">+ Many More</div>
+      </div>
     </div>
+    <button class="brand-nav" id="brandNext">&#8594;</button>
   </div>
 </section>
 
@@ -1438,6 +1462,24 @@ function toggleFaq(el) {
 }
 </script>
 
+<script>
+  (function(){
+    var track = document.getElementById('brandTrack');
+    var cards = track ? track.querySelectorAll('.brand-name-card') : [];
+    var cardW = 172; // 160px + 12px gap
+    var visible = 5;
+    var max = Math.max(0, cards.length - visible);
+    var pos = 0;
+    function moveTo(n) {
+      pos = Math.max(0, Math.min(n, max));
+      track.style.transform = 'translateX(-' + (pos * cardW) + 'px)';
+    }
+    var prev = document.getElementById('brandPrev');
+    var next = document.getElementById('brandNext');
+    if (prev) prev.addEventListener('click', function(){ moveTo(pos - 1); });
+    if (next) next.addEventListener('click', function(){ moveTo(pos + 1); });
+  })();
+</script>
 <script>
   (function(){
     var slides = document.querySelectorAll('.hero-slide');
