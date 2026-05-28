@@ -835,24 +835,48 @@
   /* INVH logo text */
   .invh-logo-wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 5px;
-    line-height: 1;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
   }
-  .invh-bar {
-    height: 3px;
+  .invh-logo-icon {
+    width: 38px;
+    height: 38px;
     background: #1a5c35;
-    border-radius: 2px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Russo One', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    flex-shrink: 0;
+    letter-spacing: 0;
+  }
+  .invh-text-stack {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    gap: 3px;
   }
   .invh-logo-text {
     font-family: 'Russo One', sans-serif;
-    font-size: 1.55rem;
+    font-size: 1.1rem;
     font-weight: 400;
-    color: #1a5c35;
-    letter-spacing: 0.22em;
+    color: #1a3d26;
+    letter-spacing: 0.14em;
     line-height: 1;
-    -webkit-text-fill-color: #1a5c35;
+    -webkit-text-fill-color: #1a3d26;
+  }
+  .invh-logo-sub {
+    font-family: var(--font-display);
+    font-size: 0.56rem;
+    font-weight: 600;
+    color: #2d8653;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    line-height: 1;
   }
   .invh-footer-logo-text {
     font-family: var(--font-display);
@@ -865,6 +889,26 @@
   .cat-card { overflow: hidden; padding: 0 !important; flex: 0 0 170px; width: 170px; }
   .cat-img { width: 100%; height: 140px; object-fit: cover; display: block; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
   .cat-label { padding: 12px 8px; font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--gray-800); }
+  .hero-slides {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+  .hero-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 28, 16, 0.68);
+  }
+  .hero-slide.active { opacity: 1; }
 </style>
 </head>
 <body>
@@ -873,9 +917,11 @@
 <nav>
   <a href="#" class="nav-logo">
     <div class="invh-logo-wrapper">
-      <div class="invh-bar"></div>
-      <span class="invh-logo-text">INVESTING</span>
-      <div class="invh-bar"></div>
+      <div class="invh-logo-icon">I</div>
+      <div class="invh-text-stack">
+        <span class="invh-logo-text">INVESTING</span>
+        <span class="invh-logo-sub">HOUSE</span>
+      </div>
     </div>
   </a>
   <ul class="nav-links">
@@ -890,6 +936,13 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image:url('electronics.jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('coffee-makers.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('vacuum-cleaners.webp')"></div>
+    <div class="hero-slide" style="background-image:url('office-supplies.webp')"></div>
+    <div class="hero-slide" style="background-image:url('air-fryers.webp')"></div>
+  </div>
   <div class="hero-inner">
     <div class="hero-badge">
       <span></span>
@@ -1206,5 +1259,16 @@ function toggleFaq(el) {
 }
 </script>
 
+<script>
+  (function(){
+    var slides = document.querySelectorAll('.hero-slide');
+    var i = 0;
+    setInterval(function(){
+      slides[i].classList.remove('active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('active');
+    }, 4500);
+  })();
+</script>
 </body>
 </html>
