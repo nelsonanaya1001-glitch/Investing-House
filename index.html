@@ -525,11 +525,12 @@
 
   /* ── WHY ── */
   .why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     max-width: 900px;
     margin: 0 auto;
+    justify-content: center;
   }
 
   .why-item {
@@ -542,6 +543,8 @@
     gap: 12px;
     box-shadow: var(--shadow-sm);
     transition: box-shadow 0.2s;
+    flex: 0 0 200px;
+    width: 200px;
   }
 
   .why-item:hover { box-shadow: var(--shadow-md); }
