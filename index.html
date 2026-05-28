@@ -1061,6 +1061,31 @@
     .about-features { grid-template-columns: 1fr; }
     .about-stats-bar { padding: 1.25rem 1.5rem; }
   }
+  .brands-showcase-section { padding: 4.5rem 0 3rem; overflow: hidden; }
+  .brands-showcase-section .section-header { padding: 0 2rem; margin-bottom: 2.5rem; }
+  .marquee-wrap {
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 14px;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-track img {
+    height: 280px;
+    width: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    flex-shrink: 0;
+  }
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 </style>
 </head>
 <body>
@@ -1191,28 +1216,31 @@
 </section>
 
 <!-- BRANDS + PRODUCTS -->
-<section id="brands">
+<section id="brands" class="brands-showcase-section">
   <div class="section-header">
-    <div class="section-tag">Featured Brands</div>
+    <div class="section-tag">Our Products</div>
     <h2>Trusted Brands in Today's Market</h2>
     <p>We work with products from recognized, high-demand brands consumers love.</p>
   </div>
-  <div class="brands-pills">
-    <div class="brand-pill">Shark</div>
-    <div class="brand-pill">Ninja</div>
-    <div class="brand-pill">KitchenAid</div>
-    <div class="brand-pill">Keurig</div>
-    <div class="brand-pill">Cuisinart</div>
-    <div class="brand-pill">Hamilton Beach</div>
-    <div class="brand-pill">Braun</div>
-    <div class="brand-pill">Black+Decker</div>
-    <div class="brand-pill">Oster</div>
-    <div class="brand-pill">Bissell</div>
-    <div class="brand-pill">Epson</div>
-    <div class="brand-pill">Canon</div>
-    <div class="brand-pill">Logitech</div>
-    <div class="brand-pill">+ Many More</div>
-  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <img src="electronics.jpeg" alt="Electronics" />
+      <img src="air-fryers.webp" alt="Air Fryers" />
+      <img src="coffee-makers.jpg" alt="Coffee Makers" />
+      <img src="vacuum-cleaners.webp" alt="Vacuum Cleaners" />
+      <img src="toasters-ovens.webp" alt="Toasters" />
+      <img src="office-supplies.webp" alt="Office Supplies" />
+      <img src="kitchen.jpg" alt="Kitchen" />
+      <img src="living-room.jpg" alt="Living Room" />
+      <img src="electronics.jpeg" alt="Electronics" />
+      <img src="air-fryers.webp" alt="Air Fryers" />
+      <img src="coffee-makers.jpg" alt="Coffee Makers" />
+      <img src="vacuum-cleaners.webp" alt="Vacuum Cleaners" />
+      <img src="toasters-ovens.webp" alt="Toasters" />
+      <img src="office-supplies.webp" alt="Office Supplies" />
+      <img src="kitchen.jpg" alt="Kitchen" />
+      <img src="living-room.jpg" alt="Living Room" />
+    </div>
   </div>
 </section>
 
