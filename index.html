@@ -689,7 +689,7 @@
   }
 
   .contact-section > p {
-    color: rgba(255,255,255,0.65);
+    color: var(--gray-600);
     font-size: 15px;
     margin-bottom: 2.5rem;
     position: relative;
@@ -963,8 +963,8 @@
   @media (max-width: 768px) { .cf-row { grid-template-columns: 1fr; } }
   /* ── ABOUT REDESIGN ── */
   .about-section {
-    background: var(--green-900);
-    color: white;
+    background: var(--gray-50);
+    color: var(--gray-900);
     text-align: center;
     padding: 5rem 2rem;
   }
@@ -975,8 +975,8 @@
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--green-300);
-    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--green-600);
+    border: 1px solid var(--green-200);
     padding: 4px 14px;
     border-radius: 100px;
     margin-bottom: 1.25rem;
@@ -985,7 +985,7 @@
     font-family: var(--font-display);
     font-size: clamp(1.6rem, 3.5vw, 2.4rem);
     font-weight: 700;
-    color: white;
+    color: var(--gray-900);
     line-height: 1.2;
     margin-bottom: 2.75rem;
     letter-spacing: -0.02em;
@@ -994,8 +994,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
     border-radius: var(--radius-xl);
     padding: 1.5rem 3rem;
     max-width: 560px;
@@ -1012,13 +1012,13 @@
     font-family: 'Russo One', sans-serif;
     font-size: 2rem;
     font-weight: 400;
-    color: var(--green-300);
+    color: var(--green-500);
     line-height: 1;
     margin-bottom: 5px;
   }
   .astat-label {
     font-size: 11px;
-    color: rgba(255,255,255,0.5);
+    color: var(--gray-500);
     font-family: var(--font-display);
     font-weight: 500;
     letter-spacing: 0.05em;
@@ -1040,23 +1040,23 @@
     margin: 0 auto;
   }
   .about-feature {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.09);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
     border-radius: var(--radius-lg);
     padding: 2rem 1.5rem;
     text-align: center;
     transition: background 0.2s, transform 0.2s;
   }
-  .about-feature:hover { background: rgba(255,255,255,0.09); transform: translateY(-3px); }
+  .about-feature:hover { background: var(--gray-50); transform: translateY(-3px); box-shadow: var(--shadow-md); }
   .about-feature-icon { font-size: 2rem; margin-bottom: 0.85rem; }
   .about-feature h3 {
     font-family: var(--font-display);
     font-size: 15px;
     font-weight: 600;
-    color: white;
+    color: var(--gray-900);
     margin-bottom: 8px;
   }
-  .about-feature p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; }
+  .about-feature p { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
   @media (max-width: 768px) {
     .about-features { grid-template-columns: 1fr; }
     .about-stats-bar { padding: 1.25rem 1.5rem; }
