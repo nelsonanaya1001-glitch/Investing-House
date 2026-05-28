@@ -909,6 +909,55 @@
     background: rgba(10, 28, 16, 0.68);
   }
   .hero-slide.active { opacity: 1; }
+  .contact-form {
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .cf-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .cf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cf-field label {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .cf-field input,
+  .cf-field textarea {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    resize: none;
+  }
+  .cf-field input::placeholder,
+  .cf-field textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .cf-field input:focus,
+  .cf-field textarea:focus {
+    border-color: var(--green-400);
+    background: rgba(255,255,255,0.12);
+  }
+  .cf-submit { align-self: center; padding: 14px 40px; margin-top: 4px; }
+  @media (max-width: 768px) { .cf-row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -1237,7 +1286,23 @@
       <div class="value">Florida, USA</div>
     </div>
   </div>
-  <a href="mailto:info@investinghouse.net" class="btn-white">Send Us a Message</a>
+  <form class="contact-form" action="https://formspree.io/info@investinghouse.net" method="POST">
+    <div class="cf-row">
+      <div class="cf-field">
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="John Smith" required />
+      </div>
+      <div class="cf-field">
+        <label>Your Email</label>
+        <input type="email" name="email" placeholder="john@company.com" required />
+      </div>
+    </div>
+    <div class="cf-field">
+      <label>Message</label>
+      <textarea name="message" rows="4" placeholder="Tell us about your wholesale needs..." required></textarea>
+    </div>
+    <button type="submit" class="btn-white cf-submit">Send Message</button>
+  </form>
 </section>
 
 <!-- FOOTER -->
